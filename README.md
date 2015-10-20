@@ -82,6 +82,8 @@ const createStoreWithMiddleware = applyMiddleware(
 const store = createStoreWithMiddleware(rootReducer);
 ```
 
+As your action creator, it should return a object with a `steps` property being an array of function. Each function will have two parameters, `dispatch` and `getState`, this is pretty much alike `redux-thunk` middleware.
+
 ## Scripts
 
 ```
