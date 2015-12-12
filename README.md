@@ -29,23 +29,21 @@ To better reuse our code, we can dispatch a action that dispatchs more action in
 
 ```javascript
 function selectState(stateId) {
-  return {
-    steps: [
-      (dispatch, getState) => {
-        dispatch({
-          type: 'SELECT_STATE',
-          payload: stateId
-        });
-      },
-      (dispatch, getState) => {
-        // `getState()` returns the state (or store) which is computed through
-        // first action, so you can use this updated store to find out needed
-        // portion and pass it to next action creator
-        const {cityId} = getState().cityList[0];
-        dispatch(selectCity(cityId))
-      }
-    ]
-  };
+  return [
+    (dispatch, getState) => {
+      dispatch({
+        type: 'SELECT_STATE',
+        payload: stateId
+      });
+    },
+    (dispatch, getState) => {
+      // `getState()` returns the state (or store) which is computed through
+      // first action, so you can use this updated store to find out needed
+      // portion and pass it to next action creator
+      const {cityId} = getState().cityList[0];
+      dispatch(selectCity(cityId))
+    }
+  ]
 }
 
 function selectCity(cityId) {
