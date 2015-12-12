@@ -1,7 +1,7 @@
 export default ({dispatch, getState}) => next => action => {
-  const {steps} = action;
+  const { steps } = action;
 
-  if(!steps || !Array.isArray(steps) || steps.any(s => typeof s !== 'function')) {
+  if(!steps || !Array.isArray(steps) || !steps.every(s => typeof s === 'function')) {
     return next(action);
   }
 

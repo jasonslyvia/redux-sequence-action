@@ -5,7 +5,6 @@ A [middleware](http://rackt.github.io/redux/docs/advanced/Middleware.html) enabl
 
 [![Build Status](https://travis-ci.org/jasonslyvia/redux-sequence-action.svg)](https://travis-ci.org/jasonslyvia/redux-sequence-action)
 [![npm version](https://badge.fury.io/js/redux-sequence-action.svg)](http://badge.fury.io/js/redux-sequence-action)
-[![Bower version](https://badge.fury.io/bo/redux-sequence-action.svg)](http://badge.fury.io/bo/redux-sequence-action)
 
 ```
 $ npm install --save redux-sequence-action
