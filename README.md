@@ -23,6 +23,48 @@ So you will have the following action creators:
 
 However, when user changes a state, the city list should be updated accordding to new state. For action creator `selectState`, it actually does the duty of `selectState` and `selectCity`.
 
+For example, suppose we must dispatch some actions in certain order: A => B & C => D => E. A is a sync action and others are async actions. So we do this:
+
+````javascript
+dispatch((dispatch, getState) => {
+    dispatch(A);
+    Promise.all(dispatch(B), dispatch(C)).then(() => {
+        return dispatch(D);
+    }).then(() => {
+        dispatch(E);
+    });
+})
+// A => B & C => D => E
+// A ~ E are actions
+```
+
+It need apply a thunk middleware which dispatch function like action, and a fetch middleware which is responsible for getting API data and return a promise.
+
+```javascript
+store => next => action => {
+  //return a promise here
+  return asyncAction(url, params).then(
+    data => {
+      return next({...action, payload: data, type: successType})
+    }, e => {}
+  )
+}
+
+```
+
+If you use redux-sequnce-action, you can merely write declarative code like this:
+
+```javascript
+dispatch([
+    A,
+    [B, C],
+    D,
+    E
+])
+```
+
+Yes, we only provide a syntax sugar.
+
 ## How
 
 To better reuse our code, we can dispatch a action that dispatchs more action in sequence, looks like this:
