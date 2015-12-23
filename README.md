@@ -30,11 +30,9 @@ To better reuse our code, we can dispatch a action that dispatchs more action in
 ```javascript
 function selectState(stateId) {
   return [
-    (dispatch, getState) => {
-      dispatch({
-        type: 'SELECT_STATE',
-        payload: stateId
-      });
+    {
+      type: 'SELECT_STATE',
+      payload: stateId
     },
     (dispatch, getState) => {
       // `getState()` returns the state (or store) which is computed through
@@ -79,7 +77,7 @@ const createStoreWithMiddleware = applyMiddleware(
 const store = createStoreWithMiddleware(rootReducer);
 ```
 
-As your action creator, it should return a object with a `steps` property being an array of function. Each function will have two parameters, `dispatch` and `getState`, this is pretty much alike `redux-thunk` middleware.
+As your action creator, it should return an array of actions.
 
 ## Scripts
 

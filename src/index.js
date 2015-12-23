@@ -1,11 +1,13 @@
 export default ({dispatch, getState}) => next => action => {
-  const { steps } = action;
-
-  if(!steps || !Array.isArray(steps) || !steps.every(s => typeof s === 'function')) {
+  if(!Array.isArray(action)) {
     return next(action);
   }
 
-  steps.reduce((result, currStep) => {
-    return result.then(() => Promise.resolve(currStep(dispatch, getState)));
+  return action.reduce( (result, currAction) => {
+    return result.then(() => {
+      return Array.isArray(currAction) ?
+        Promise.all(currAction.map(item => dispatch(item))) :
+        dispatch(currAction);
+    });
   }, Promise.resolve());
 }
