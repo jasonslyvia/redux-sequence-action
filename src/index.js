@@ -5,6 +5,8 @@ export default ({dispatch, getState}) => next => action => {
 
   return action.reduce( (result, currAction) => {
     return result.then(() => {
+      if (!currAction) { return Promise.resolve(); }
+
       return Array.isArray(currAction) ?
         Promise.all(currAction.map(item => dispatch(item))) :
         dispatch(currAction);
