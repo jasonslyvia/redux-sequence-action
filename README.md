@@ -25,7 +25,7 @@ However, when user changes a state, the city list should be updated accordding t
 
 For example, suppose we must dispatch some actions in certain order: A => B & C => D => E. A is a sync action and others are async actions. So we do this:
 
-````javascript
+```javascript
 dispatch((dispatch, getState) => {
     dispatch(A);
     Promise.all(dispatch(B), dispatch(C)).then(() => {
