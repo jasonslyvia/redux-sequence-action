@@ -106,7 +106,7 @@ $ npm install --save redux-sequence-action
 
 Then, to enable Redux Sequence Action, use applyMiddleware():
 
-```
+```javascript
 import { createStore, applyMiddleware } from 'redux';
 import sequenceAction from 'redux-sequence-action';
 import rootReducer from './reducers/index';
