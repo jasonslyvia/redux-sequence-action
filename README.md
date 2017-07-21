@@ -25,7 +25,7 @@ However, when user changes a state, the city list should be updated accordding t
 
 For example, suppose we must dispatch some actions in certain order: A => B & C => D => E. A is a sync action and others are async actions. So we do this:
 
-````javascript
+```javascript
 dispatch((dispatch, getState) => {
     dispatch(A);
     Promise.all(dispatch(B), dispatch(C)).then(() => {
@@ -106,7 +106,7 @@ $ npm install --save redux-sequence-action
 
 Then, to enable Redux Sequence Action, use applyMiddleware():
 
-```
+```javascript
 import { createStore, applyMiddleware } from 'redux';
 import sequenceAction from 'redux-sequence-action';
 import rootReducer from './reducers/index';
