@@ -12,7 +12,7 @@ $ npm install --save redux-sequence-action
 
 ## Why
 
-Suppose you have a `AddressPicker` component which let user select the delivery address. It consists of 2 `select` with state list and city list. User can picks a state then a city.
+Suppose you have a `AddressPicker` component which lets user select a delivery address. It consists of 2 `select` with state list and city list. User can pick a state then a city.
 
 ![select](http://ww2.sinaimg.cn/bmiddle/831e9385gw1ex7w1vkbypj205900rjr7.jpg)
 
@@ -21,7 +21,7 @@ So you will have the following action creators:
  - selectState (stateId)
  - selectCity (cityId)
 
-However, when user changes a state, the city list should be updated accordding to new state. For action creator `selectState`, it actually does the duty of `selectState` and `selectCity`.
+However, when user changes a state, the city list should be updated according to the new state. For action creator `selectState`, it actually does the duty of `selectState` and `selectCity`.
 
 For example, suppose we must dispatch some actions in certain order: A => B & C => D => E. A is a sync action and others are async actions. So we do this:
 
